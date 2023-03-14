@@ -5,7 +5,7 @@ import mainRoutes from "./MainRoutes";
 import loginRoutes from "./LoginRoutes";
 
 const Routes = () => {
-  return <RouterProvider router={true ? loginRoutes : mainRoutes} />;
+  return <RouterProvider router={false ? loginRoutes : mainRoutes} />;
 };
 
 export default Routes;
