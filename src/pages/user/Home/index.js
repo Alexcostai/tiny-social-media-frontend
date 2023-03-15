@@ -1,146 +1,110 @@
 import * as React from "react";
 //mui
 import {
-  Link,
   Container,
-  Typography,
-  Toolbar,
-  Box,
-  Stack,
   Grid,
-  CssBaseline,
   CardMedia,
   CardContent,
-  CardActions,
   Card,
-  Button,
-  AppBar,
+  CardHeader,
+  Avatar,
+  Typography,
+  Box,
 } from "@mui/material";
-import CameraIcon from "@mui/icons-material/PhotoCamera";
+import { Send, FavoriteBorder, ChatBubbleOutline } from "@mui/icons-material";
+//project imports
+import UserProfileImg from "../../../assets/images/example/user-profile.jpeg";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+const styles = {
+  card: {
+    width: "55%",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+  },
+  cardHeader: {
+    p: 1,
+    width: "90%",
+  },
+  cardImg: {
+    width: "100%",
+    objectFit: "contain",
+  },
+  likesTxt: {
+    fontSize: 14,
+    fontWeight: "bold",
+    "&:hover": {
+      color: "grey",
+      cursor: "pointer",
+    },
+  },
+  cardIcon: {
+    m: 0.8,
+    mb: 0,
+    "&:hover": {
+      color: "grey",
+      cursor: "pointer",
+    },
+  },
+  cardContent: {
+    p: 0,
+    flexGrow: 1,
+    width: "90%",
+    "&:last-child": {
+      paddingBottom: 1,
+    },
+  },
+};
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-export default function Album() {
+export default function Home() {
   return (
     <>
-      <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon sx={{ mr: 2 }} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Album layout
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <main>
-        {/* Hero unit */}
-        <Box
-          sx={{
-            bgcolor: "background.paper",
-            pt: 8,
-            pb: 6,
-          }}
-        >
-          <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              Album layout
-            </Typography>
-            <Typography
-              variant="h5"
-              align="center"
-              color="text.secondary"
-              paragraph
-            >
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
-            </Typography>
-            <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
-            </Stack>
-          </Container>
-        </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card
+        <Container sx={{ mt: 2 }} maxWidth="md">
+          <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
+            <Card sx={styles.card}>
+              <CardHeader
+                avatar={
+                  <Avatar src={UserProfileImg} sx={{ width: 30, height: 30 }} />
+                }
+                title="Shrimp and Chorizo Paella"
+                subheader="September 14, 2016"
+                sx={styles.cardHeader}
+              />
+              <CardMedia
+                component="img"
+                sx={styles.cardImg}
+                image="https://source.unsplash.com/random"
+                alt="random"
+              />
+              <CardContent sx={styles.cardContent}>
+                <Box
                   sx={{
-                    height: "100%",
                     display: "flex",
-                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "space-between",
                   }}
                 >
-                  <CardMedia
-                    component="img"
-                    sx={{
-                      // 16:9
-                      pt: "56.25%",
-                    }}
-                    image="https://source.unsplash.com/random"
-                    alt="random"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe
-                      the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
+                  <Box>
+                    <FavoriteBorder sx={{ ...styles.cardIcon, ml: 0 }} />
+                    <ChatBubbleOutline sx={styles.cardIcon} />
+                    <Send sx={styles.cardIcon} />
+                  </Box>
+                  <Typography sx={styles.likesTxt}>107,342 likes</Typography>
+                </Box>
+                <Box>
+                  <Typography sx={{ fontSize: 14 }}>
+                    Lorem ipsum dolor sit amet consectetur adipiscing elit
+                    libero nec tellus, phasellus gravida tempor varius integer
+                    commodo magnis tempus urna.
+                  </Typography>
+                </Box>
+              </CardContent>
+            </Card>
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
     </>
   );
 }

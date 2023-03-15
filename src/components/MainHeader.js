@@ -26,7 +26,7 @@ const styles = {
   icon: {
     width: 26,
     height: 26,
-    marginBottom: -1.5,
+    mt: 1,
     transition: "all 0.3s ease",
     "&:hover": {
       transform: "scale(1.15)",
